@@ -14,9 +14,9 @@
                  <div class="pr-5"><strong>212</strong> following</div>
              </div>
 
-             <div class="pt-4 font-weight-bold" > omerarafat.com </div>
-             <div>PicShare is a photo-sharing website that allows everyone to socially connect with other users and view their photos</div>
-             <div> <a href="https://www.omerarafat.com">www.omerarafat.com</a> </div>           
+             <div class="pt-4 font-weight-bold" > {{ $user->profile->title }} </div>
+             <div>{{ $user->profile->description }}</div>
+             <div> <a href="https://www.omerarafat.com">{{ $user->profile->url ?? 'N/A' }}</a> </div>           
         </div>
     </div>
 
