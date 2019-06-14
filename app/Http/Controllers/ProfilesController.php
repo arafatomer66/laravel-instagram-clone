@@ -31,10 +31,10 @@ class ProfilesController extends Controller
             'title' => 'required',
             'description' => 'required',
             'url' => 'url',
-            'image' => '',
+            'image' => 'required',
         ]);
 
-
+      
 
         if(request('image')){
 
