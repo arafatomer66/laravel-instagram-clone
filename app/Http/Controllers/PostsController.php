@@ -54,11 +54,5 @@ class PostsController extends Controller
         return view('posts.show' , compact('post') );
     }
 
-    public function showf (Post $post){
-        return view('posts.show' , compact('post') );
-    }
-
-    public function shohwf (Post $post){
-        return view('posts.show' , compact('post') );
-    }
+ 
 }

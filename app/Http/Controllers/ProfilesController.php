@@ -48,9 +48,8 @@ class ProfilesController extends Controller
 
         }
 
-        dd($data);
 
-     
+    
 
         //extra layer of auth()
         auth()->user()->profile->update(array_merge(
