@@ -16,7 +16,7 @@ class ProfilesController extends Controller
             'user' => $user
         ]);
     }
-
+  //edit prilfe
 
     public function edit(User $user){
          $this->authorize('update' , $user->profile);
