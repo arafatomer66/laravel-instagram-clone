@@ -3,58 +3,62 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image ;
+use Intervention\Image\Facades\Image;
 
-use App\User ;
+use App\User;
 
 class ProfilesController extends Controller
 {
     public function index($user)
     {
-        $user =  User::findOrFail($user)  ;
-        return view('profiles.index' , [
+        $user =  User::findOrFail($user);
+        return view('profiles.index', [
             'user' => $user
         ]);
     }
-  //edit prilfe
+    //edit prilfe
 
-    public function edit(User $user){
-         $this->authorize('update' , $user->profile);
-         return view('profiles.edit' , compact('user'));
+    public function edit(User $user)
+    {
+
+        $this->authorize('update', $user->profile);
+        return view('profiles.edit', compact('user'));
     }
 
 
-    public function update(User $user){
-        $this->authorize('update' , $user->profile);
+    public function update(User $user)
+    {
+        $this->authorize('update', $user->profile);
 
         $data =  request()->validate([
             'title' => 'required',
             'description' => 'required',
             'url' => 'url',
-            'image' => 'required',
+            'image' => '',
         ]);
 
-      
 
-        if(request('image')){
 
-        $imagePath = request('image')->store( 'profile' , 'public' );
+        if (request('image')) {
 
-       //image processing
+            $imagePath = request('image')->store('profile', 'public');
 
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
-  
-        $image->save();
+            //image processing
 
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+
+            $image->save();
+
+            $imageArray = [ 'image' => $imagePath ] ;
         }
 
 
-    
+
 
         //extra layer of auth()
         auth()->user()->profile->update(array_merge(
-            $data ,
-            [ 'image' => $imagePath ]
+            $data,
+            $imageArray ?? []
         ));
 
         return redirect('/profile/' . $user->id);
