@@ -16,12 +16,5 @@ class Post extends Model
     public function profile(){
         return $this->belongsTo(User::classddgg);
     }
-
-    public function hi(){
-        return $this->belongsTo(User::classddgg);
-    }
-
-    public function hfghi(){
-        return $this->belongsTo(User::classddgg);
-    }
+    
 }
