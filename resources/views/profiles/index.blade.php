@@ -14,7 +14,7 @@
 
                         {{-- FollowButton Component --}}
     
-                        <follow-button></follow-button>
+                        <follow-button  user-id = " {{ $user->id }} " follows = {{ $follows }} ></follow-button>
     
                 </div>
             @can('update', $user->profile)

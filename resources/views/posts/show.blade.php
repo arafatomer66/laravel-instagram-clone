@@ -28,7 +28,7 @@
 
             <hr>
 
-
+        
           <p>
             <span class="font-weight-bold" ><a href="/profile/{{ $post->user->id }}">{{ $post->user->username }}</a></span>   {{ $post->caption }}
           </p>
