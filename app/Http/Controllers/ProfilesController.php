@@ -13,6 +13,8 @@ class ProfilesController extends Controller
     {
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false ;
 
+        //  dd($follows);
+
         // $user =  User::findOrFail($user);
         // return view('profiles.index', [
         //     'user' => $user

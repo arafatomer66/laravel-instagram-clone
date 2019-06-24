@@ -8,6 +8,7 @@
     export default {
 
         props : ['userId' , 'follows'] ,
+        
         mounted() {
             console.log('Component mounted.')
         },
@@ -23,11 +24,19 @@
 
         methods: {
             followUser(){
-                axios.post('/follow/' + this.userId).then(
+                axios.post('/follow/' + this.userId)
+                .then(
                     (response) => {
-                       console.log(response.data)
+
+                        this.status =  !this.status ;
+                       console.log(response.data) ;
+                    })
+                .catch(errors => {
+                    if(errors.response.status == 401){
+                        window.location = '/login' ;
                     }
-                );
+                })
+             
             }
         },
     
