@@ -55,6 +55,7 @@ class User extends Authenticatable
     }
 
         protected static function boot(){
+            //boot 
             parent::boot();
 
             static::created(function ($user){
