@@ -51,6 +51,7 @@ class User extends Authenticatable
 
 
     public function profile(  ){
+        //one to one relation
         return $this->hasOne(Profile::class);
     }
 
